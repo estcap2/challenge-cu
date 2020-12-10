@@ -93,7 +93,7 @@ class MazeSolver:
         return False
 
     def _get_next_value(self):
-        #TODO change to be able to start by ani point of pattern
+        #TODO change to be able to start by any point of pattern
         # using modulus to return next valid letter. useless if starting with offset
         return self._pattern[(len(self._current_path) - 1) % len(self._pattern)]
 
