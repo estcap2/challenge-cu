@@ -1,10 +1,10 @@
 # CookUnity Code Challenge
 
-##Requirements:
+### Requirements:
 
 - Solve given maze with repeating path pattern CCCDDDEEEDDD
 
-##How to run:
+### How to run:
 
 - Python 3.7 required (check version with `python --version` )
 - Run `python solver.py`
