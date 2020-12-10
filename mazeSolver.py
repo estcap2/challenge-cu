@@ -92,10 +92,18 @@ class MazeSolver:
             return True
         return False
 
-    def _get_next_value(self):
-        #TODO change to be able to start by any point of pattern
+    def _valid_next_point(self, p: Point2D):
+        value = self._get_value(p)
+        if value is None:
+            return False
+
+        # TODO change to be able to start by any point of pattern
         # using modulus to return next valid letter. useless if starting with offset
-        return self._pattern[(len(self._current_path) - 1) % len(self._pattern)]
+        next_value = self._pattern[(len(self._current_path) - 1) % len(self._pattern)]
+        # not a valid next value
+        if (value != self._finish) and (value != next_value):
+            return False
+        return True
 
     def _get_value(self, point: Point2D):
         # get value or None if invalid position
@@ -120,21 +128,7 @@ class MazeSolver:
 
         moves = []
         for m in possible_moves:
-            value = self._get_value(m)
-            next_value = self._get_next_value()
-
-            # inner validations separated for readability
-            # not a valid maze location
-            if value is None:
-                continue
-
-            # not a valid next value
-            if (value != self._finish) and (value != next_value):
-                continue
-
-            # already visited
-            if self._current_path.has_point(m):
-                continue
-
-            moves.append(m)
+            #  valid step and not previously visited
+            if self._valid_next_point(m) and (not self._current_path.has_point(m)):
+                moves.append(m)
         return moves
