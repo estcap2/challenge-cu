@@ -72,6 +72,9 @@ class MazeSolver:
             print(row)
 
     def solve(self, multiple_solutions: bool = False):
+        # in case recycling instance and re run, reinitialize
+        self.__init__(self._maze, self._pattern, self._start, self._finish)
+
         # iteration to prevent recursion depth overflow
         start_time = timeit.default_timer()
         next_step = True
