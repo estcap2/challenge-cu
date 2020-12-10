@@ -15,6 +15,10 @@ class MazeSolver:
         self._solutions = []
         self._dead_ends = []
         self._time = None
+        self._pattern_haystack = ''
+        for p in self._pattern:
+            self._pattern_haystack += p
+        self._pattern_haystack += self._pattern_haystack
 
     @property
     def time(self):
@@ -92,18 +96,27 @@ class MazeSolver:
             return True
         return False
 
-    def _valid_next_point(self, p: Point2D):
-        value = self._get_value(p)
+    def _valid_next_point(self, point: Point2D):
+        value = self._get_value(point)
+        # none is not a valid value (point is not part of the maze)
         if value is None:
             return False
 
-        # TODO change to be able to start by any point of pattern
-        # using modulus to return next valid letter. useless if starting with offset
-        next_value = self._pattern[(len(self._current_path) - 1) % len(self._pattern)]
-        # not a valid next value
-        if (value != self._finish) and (value != next_value):
-            return False
-        return True
+        # finish is a valid value
+        if value == self._finish:
+            return True
+
+        # search if addition of next point would match the given pattern
+        needle = ''
+        backtrack = len(self._pattern) - 1
+        # build needle with backtrack latest values in current_path
+        for p in self._current_path[-backtrack:]:
+            # omit start point
+            if p == self._start:
+                continue
+            needle += self._get_value(p)
+        needle += value
+        return needle in self._pattern_haystack
 
     def _get_value(self, point: Point2D):
         # get value or None if invalid position
@@ -111,6 +124,7 @@ class MazeSolver:
             # map rows to y, columns to x
             return self._maze[point.y][point.x]
         except IndexError:
+            # None in case of out of bounds. Useful for comparing
             return None
 
     def _current_location(self) -> Point2D:
