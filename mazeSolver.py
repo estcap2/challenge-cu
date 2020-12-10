@@ -39,12 +39,20 @@ class MazeSolver:
         return values
 
     def print_solutions_graphs(self):
+        if len(self._solutions) == 0:
+            print('\nNo Solutions found')
+            return
+
         for i, solution in enumerate(self._solutions):
             print('\nSolution ' + str(i + 1))
             print('\nPath ' + str(solution))
             self.print_path_graph(solution)
 
     def print_dead_end_graphs(self):
+        if len(self._dead_ends) == 0:
+            print('\nNo Dead Ends found')
+            return
+
         for i, solution in enumerate(self._dead_ends):
             print('\nDead End ' + str(i + 1))
             self.print_path_graph(solution)
