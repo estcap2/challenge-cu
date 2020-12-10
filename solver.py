@@ -36,8 +36,8 @@ solver.print_dead_end_graphs()
 solver.print_solutions_graphs()
 
 
+# todo possible improvements:
 """"
-todo possible improvements:
 To be able to automatically get all start points, a list of possible start/end points should be implemented
 
 _get_next_value could be totally refactored to be able to start from any point in the pattern

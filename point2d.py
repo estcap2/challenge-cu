@@ -9,6 +9,9 @@ class Point2D:
             return (self.x == other.x) & (self.y == other.y)
         return False
 
+    def __str__(self):
+        return '(' + str(self.x) + ',' + str(self.y) + ')'
+
     @property
     def x(self):
         return self.__x

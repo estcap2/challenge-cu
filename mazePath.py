@@ -36,6 +36,18 @@ class Path:
             return len(other._points) == len(self._points) and sorted(other._points) == sorted(self._points)
         return False
 
+    def __str__(self):
+        s = '['
+        first = True
+        for p in self._points:
+            if first:
+                first = False
+            else:
+                s += ', '
+            s += str(p)
+        s += ']'
+        return s
+
     def append(self, point: Point2D):
         self._points.append(point)
 

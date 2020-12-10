@@ -37,7 +37,7 @@ class MazeSolver:
     def print_solutions_graphs(self):
         for i, solution in enumerate(self._solutions):
             print('\nSolution ' + str(i + 1))
-            # TODO print possitions coordinates
+            print('\nPath ' + str(solution))
             self.print_path_graph(solution)
 
     def print_dead_end_graphs(self):
