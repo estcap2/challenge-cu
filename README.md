@@ -2,7 +2,7 @@
 
 ### Requirements:
 
-- Solve given maze with repeating path pattern CCCDDDEEEDDD
+- Solve given maze with repeating path pattern CCCDDDEEEDDD starting and ending in B
 
 ### How to run:
 
