@@ -28,5 +28,5 @@ Solution 1
 ```
 
 ##### Potential improvements:
-- Verification of input maze format (would involve creating a Maze class and maybe extending Point2D to hold a point value)
+- Verification of input maze format (would probably involve creating a Maze class and maybe extending Point2D to hold a point value)
 - Automatic finding of start/finish combinations. (Out of scope, but would involve iterating on combinations and comparing point coordinates for success instead of finish value)
