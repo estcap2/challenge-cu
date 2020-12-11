@@ -4,12 +4,13 @@ class Point2D:
         self.__y = y
 
     def __eq__(self, other):
-        """Overrides the default implementation ( __ne__ unnecessary in Python 3)"""
+        """Overrides the default = operator implementation"""
         if isinstance(other, Point2D):
             return (self.x == other.x) & (self.y == other.y)
         return False
 
     def __str__(self):
+        """Overrides the default to string implementation"""
         return '(' + str(self.x) + ',' + str(self.y) + ')'
 
     @property

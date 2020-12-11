@@ -31,12 +31,13 @@ class Path:
         return self._points[floor_number]
 
     def __eq__(self, other):
-        """Overrides the default implementation ( __ne__ unnecessary in Python 3)"""
+        """Overrides the default = operator implementation"""
         if isinstance(other, Path):
             return len(other._points) == len(self._points) and sorted(other._points) == sorted(self._points)
         return False
 
     def __str__(self):
+        """Overrides the default to string implementation"""
         s = '['
         first = True
         for p in self._points:
@@ -51,10 +52,12 @@ class Path:
     def append(self, point: Point2D):
         self._points.append(point)
 
-    def get_point(self, index: int):
+    # retrives Point2D at index
+    def get_point(self, index: int) -> Point2D:
         return self._points[index]
 
-    def has_point(self, point: Point2D):
+    # checks whether the point is already present in Path
+    def has_point(self, point: Point2D) -> bool:
         for m in self._points:
             if m == point:
                 return True

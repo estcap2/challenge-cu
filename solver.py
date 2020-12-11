@@ -1,11 +1,6 @@
 #!/usr/bin/python
-from __future__ import annotations
 from point2d import Point2D
 from mazeSolver import MazeSolver
-import sys
-MIN_PYTHON = (3, 1)
-if sys.version_info < MIN_PYTHON:
-    sys.exit("Python %s.%s or later is required.\n" % MIN_PYTHON)
 
 input_maze = [
     ['A', 'B', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A'],
@@ -33,12 +28,4 @@ solver = MazeSolver(input_maze, input_pattern, input_start, input_finish)
 solver.solve()
 solver.print_dead_end_graphs()
 solver.print_solutions_graphs()
-print('\nExecution time [seconds] ' + str(solver.time))
-
-# todo possible improvements:
-""""
-To be able to automatically get all start points, a list of possible start/end points should be implemented
-
-For multiple starts, the comparison of success should be evaluated for position to check whether or not the two connected
-points are already discovered
-"""
+print('\nExecution time in seconds: ' + str(solver.time))
